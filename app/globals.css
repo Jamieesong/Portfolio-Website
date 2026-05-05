@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --void: #1a1614;
+  --bone: #f5efe0;
+  --ink: #2d241e;
+  --terra: #cc5d33;
+  --rust: #a85238;
+}
+
+.wavy-underline {
+  text-decoration: underline wavy;
+  text-decoration-color: var(--terra);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bone);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+@layer utilities {
+  .bg-stripes {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0px 23px,
+      rgba(45, 36, 30, 0.03) 23px 25px
+    );
+  }
+
+  .font-display {
+    font-family: var(--font-syncopate), sans-serif;
+  }
+
+  .font-data {
+    font-family: var(--font-space-mono), monospace;
+  }
+}
+
+/* Starburst spin animation */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes bounce-dots {
+  0%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-6px); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-33.333%); }
+}
+
+.animate-marquee {
+  animation: marquee 22s linear infinite;
+}
+
+.animate-bounce-dot {
+  animation: bounce-dots 1.4s ease-in-out infinite;
+}
+
+.animate-bounce-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.animate-bounce-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* Crosshair cursor for project cards */
+.cursor-crosshair {
+  cursor: crosshair;
+}
+
+/* Anchor bar for hero split */
+.anchor-bar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 12px;
+  background-color: var(--ink);
+  z-index: 10;
+}

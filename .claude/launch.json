@@ -1,0 +1,19 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "portfolio",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--", "--port", "5175"],
+      "port": 5175,
+      "cwd": "/Users/songchaewon/portfolio website"
+    },
+    {
+      "name": "agency-landing",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--", "--port", "5174"],
+      "port": 5174,
+      "cwd": "/Users/songchaewon/portfolio website/agency-landing"
+    }
+  ]
+}

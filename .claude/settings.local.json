@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(sudo chmod:*)",
+      "Bash(npm run:*)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(curl -L \"https://motionsites.ai/assets/hero-finlytic-preview-CV9g0FHP.gif\" -o \"/Users/songchaewon/portfolio website/agency-landing/src/assets/feature-1.gif\")",
+      "Bash(curl -L \"https://motionsites.ai/assets/hero-wealth-preview-B70idl_u.gif\" -o \"/Users/songchaewon/portfolio website/agency-landing/src/assets/feature-2.gif\")",
+      "Bash(python3 -c ':*)",
+      "Bash(wait)",
+      "Bash(node node_modules/.bin/esbuild --version)",
+      "Bash(xattr \"/Users/songchaewon/portfolio website/agency-landing/node_modules/@esbuild/darwin-arm64/bin/esbuild\")",
+      "Bash(\"/Users/songchaewon/portfolio website/agency-landing/node_modules/@esbuild/darwin-arm64/bin/esbuild\" --version)",
+      "Bash(npm --version)",
+      "Bash(npx --yes vite --version)",
+      "Bash(node node_modules/.bin/vite --version)",
+      "Bash(timeout 10 node node_modules/.bin/vite --port 5174)",
+      "mcp__Claude_Preview__preview_start"
+    ]
+  }
+}
