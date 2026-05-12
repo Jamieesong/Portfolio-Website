@@ -64,17 +64,17 @@ export default function ProjectCard({
       </div>
 
       {/* Caption */}
-      <div className="flex flex-col gap-3">
-        <h3 className="font-display font-bold text-lg md:text-xl uppercase tracking-tight text-ink leading-tight transition-colors duration-500 group-hover:text-terra">
+      <div className="flex flex-col gap-2.5">
+        <h3 className="font-display font-bold text-sm md:text-base uppercase tracking-tight text-ink leading-tight transition-colors duration-500 group-hover:text-terra">
           {title}
         </h3>
-        <p className="font-sans text-ink/70 text-sm md:text-base leading-relaxed max-w-2xl">
+        <p className="font-sans text-ink/70 text-[12.5px] md:text-[13px] leading-[1.6] max-w-2xl">
           {description}
         </p>
 
-        <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 pt-1">
+        <div className="flex flex-wrap items-center justify-between gap-x-5 gap-y-2 pt-0.5">
           {/* Meta — year · role · subtitle · tag */}
-          <p className="font-data text-[10px] uppercase tracking-widest text-ink/50 flex flex-wrap items-center gap-x-2 gap-y-1">
+          <p className="font-data text-[9px] uppercase tracking-widest text-ink/50 flex flex-wrap items-center gap-x-2 gap-y-1">
             <span>{year}</span>
             <span className="text-ink/25">·</span>
             <span>{role}</span>
@@ -89,7 +89,7 @@ export default function ProjectCard({
             {tools.map((tool) => (
               <li
                 key={tool}
-                className="font-data text-[9px] uppercase tracking-widest text-ink/60 border border-ink/20 rounded-full px-2.5 py-0.5 transition-colors duration-500 hover:text-ink hover:border-ink/50"
+                className="font-data text-[8.5px] uppercase tracking-widest text-ink/60 border border-ink/20 rounded-full px-2 py-0.5 transition-colors duration-500 hover:text-ink hover:border-ink/50"
               >
                 {tool}
               </li>

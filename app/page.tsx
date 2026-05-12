@@ -5,7 +5,7 @@ import FloatingNav from '@/components/FloatingNav'
 
 export default function Home() {
   return (
-    <main className="bg-bone min-h-screen w-full border-b-2 border-ink">
+    <main className="bg-bone min-h-screen w-full border-b border-ink/25">
       <FloatingNav />
       <Hero />
       <SelectedWork />

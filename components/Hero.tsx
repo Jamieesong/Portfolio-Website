@@ -244,7 +244,7 @@ export default function Hero() {
   return (
     <>
       <CursorFollower />
-      <section className="w-full h-screen relative overflow-hidden border-b-2 border-ink bg-bone">
+      <section className="w-full h-screen relative overflow-hidden border-b border-ink/25 bg-bone">
 
         {/* Full-screen organic star outline — interactive */}
         <StarOutline />
@@ -264,7 +264,7 @@ export default function Hero() {
         </div>
 
         {/* BOTTOM — current role */}
-        <div className="absolute bottom-0 left-0 right-0 flex items-center justify-center px-10 py-5 z-10 border-t-2 border-ink pointer-events-none">
+        <div className="absolute bottom-0 left-0 right-0 flex items-center justify-center px-10 py-5 z-10 border-t border-ink/25 pointer-events-none">
           <p className="font-sans font-bold text-ink text-sm tracking-tight">
             UX Design Intern at{' '}
             <span
