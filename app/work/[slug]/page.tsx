@@ -82,8 +82,11 @@ export default function ProjectPage({
         </>
       )}
 
-      {/* Portfolio pages — stacked images. Full-bleed projects fill the whole
-          width; standard projects sit centered in a max-w-4xl column. */}
+      {/* Portfolio pages — stacked images. Full-bleed projects render the
+          image at 80% width centered, with a heavily blurred copy of the
+          same image filling the surrounding space so the colors continue
+          seamlessly into the edges. Standard projects sit in a max-w-4xl
+          centered column. */}
       <section
         className={
           fullBleed
@@ -104,6 +107,25 @@ export default function ProjectPage({
               — they&apos;ll appear here automatically, sorted by filename.
             </p>
           </div>
+        ) : fullBleed ? (
+          images.map((src, i) => (
+            <div key={src} className="relative w-full overflow-hidden">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={src}
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 w-full h-full object-fill blur-[60px] scale-110 opacity-95"
+              />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={src}
+                alt={`${project.title} — page ${i + 1}`}
+                className="relative z-10 w-[80%] mx-auto block"
+                loading={i < 2 ? 'eager' : 'lazy'}
+              />
+            </div>
+          ))
         ) : (
           images.map((src, i) => (
             // eslint-disable-next-line @next/next/no-img-element
@@ -111,11 +133,7 @@ export default function ProjectPage({
               key={src}
               src={src}
               alt={`${project.title} — page ${i + 1}`}
-              className={
-                fullBleed
-                  ? 'w-full block'
-                  : 'w-full max-w-4xl rounded-lg shadow-[0_20px_60px_-40px_rgba(45,36,30,0.35)]'
-              }
+              className="w-full max-w-4xl rounded-lg shadow-[0_20px_60px_-40px_rgba(45,36,30,0.35)]"
               loading={i < 2 ? 'eager' : 'lazy'}
             />
           ))
