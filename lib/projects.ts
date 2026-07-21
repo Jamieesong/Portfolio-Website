@@ -29,8 +29,28 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    slug: 'pawlog',
+    slug: 'ilkwang',
     number: '01',
+    title: 'Ilkwang Lighting',
+    subtitle: 'Website Redesign',
+    description:
+      "A full website redesign for Ilkwang Lighting — restructuring information architecture and modernising the visual system to make a heritage lighting brand feel approachable, scrollable, and confident online.",
+    tag: 'Website',
+    year: '2025',
+    role: 'UI / UX designer',
+    tools: ['Figma', 'Illustrator', 'Notion'],
+    image: '/projects/ilkwang.jpg',
+    imagePosition: 'center',
+    interactive: true,
+    sectionGroups: [
+      [7, 8, 9],
+      [10, 11, 12],
+      [13, 14, 15, 16],
+    ],
+  },
+  {
+    slug: 'pawlog',
+    number: '02',
     title: 'Pawlog',
     subtitle: 'UX/UI Mobile App',
     description:
@@ -45,7 +65,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'gentle-monster',
-    number: '02',
+    number: '03',
     title: 'Gentle Monster',
     subtitle: 'Web Promotion',
     description:
@@ -59,7 +79,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'santa-maria-novella',
-    number: '03',
+    number: '04',
     title: 'Santa Maria Novella',
     subtitle: 'Website Redesign',
     description:
@@ -77,7 +97,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'parksound',
-    number: '04',
+    number: '05',
     title: 'ParkSound AI',
     subtitle: 'AI UX Mobile App',
     description:
@@ -89,26 +109,6 @@ export const projects: Project[] = [
     image: '/projects/parksound.png',
     imagePosition: 'center',
     interactive: true,
-  },
-  {
-    slug: 'ilkwang',
-    number: '05',
-    title: 'Ilkwang Lighting',
-    subtitle: 'Website Redesign',
-    description:
-      "A full website redesign for Ilkwang Lighting — restructuring information architecture and modernising the visual system to make a heritage lighting brand feel approachable, scrollable, and confident online.",
-    tag: 'Website',
-    year: '2025',
-    role: 'UI / UX designer',
-    tools: ['Figma', 'Illustrator', 'Notion'],
-    image: '/projects/ilkwang.jpg',
-    imagePosition: 'center',
-    interactive: true,
-    sectionGroups: [
-      [7, 8, 9],
-      [10, 11, 12],
-      [13, 14, 15, 16],
-    ],
   },
 ]
 
