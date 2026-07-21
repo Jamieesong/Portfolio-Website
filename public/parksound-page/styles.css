@@ -1,0 +1,839 @@
+/* ============================================================
+   Parksound — Portfolio Detail Page
+   Editorial layout for an end-to-end AI UX prototype.
+   ============================================================ */
+
+:root {
+  --ink: #0f172a;
+  --navy: #001f45;
+  --navy-soft: #1b2c4a;
+  --muted: #5b6577;
+  --line: rgba(15, 23, 42, 0.10);
+  --line-strong: rgba(15, 23, 42, 0.18);
+  --soft: #fffcf3;
+  --paper: #fffcf3;
+  --panel: #ffffff;
+  --orange: #ff6335;
+  --orange-soft: #ffece4;
+  --blue: #367eff;
+  --highlight: #ffe6a7;
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+
+  --shadow-sm: 0 6px 18px -8px rgba(15, 23, 42, 0.18);
+  --shadow-md: 0 24px 56px -28px rgba(15, 23, 42, 0.25);
+  --shadow-lg: 0 40px 80px -40px rgba(15, 23, 42, 0.35);
+
+  --type-sans:
+    "Inter", "SF Pro Text", ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --type-display:
+    "Inter Display", "Inter", "SF Pro Display", ui-sans-serif, system-ui,
+    sans-serif;
+
+  font-family: var(--type-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--soft);
+  font-size: 17px;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+}
+
+img { display: block; max-width: 100%; }
+main { overflow: hidden; }
+
+a { color: inherit; }
+
+/* ---------- Layout container ---------- */
+
+.hero,
+.section {
+  width: min(960px, calc(100% - 64px));
+  margin: 0 auto;
+}
+
+.section {
+  position: relative;
+  min-height: 100vh;
+  padding: clamp(48px, 6vh, 72px) 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.section + .section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 64px;
+  height: 1px;
+  background: var(--line-strong);
+}
+
+/* ---------- Typography ---------- */
+
+h1, h2, h3 {
+  font-family: var(--type-display);
+  color: var(--navy);
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  margin: 0 0 14px;
+  font-size: clamp(1.4rem, 2.1vw, 1.7rem);
+  font-weight: 700;
+  line-height: 1.18;
+}
+
+p { margin: 0; line-height: 1.65; }
+
+.kicker,
+.persona-type {
+  margin: 0 0 22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--orange);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* Section label — mirrors the colored dot-prefixed title used inside the
+   exported Figma slides so the HTML sections read as the same family. */
+.section-label {
+  margin: 0 0 clamp(16px, 2.4vh, 26px);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--blue);
+  font-family: var(--type-display);
+  font-size: clamp(1.05rem, 1.6vw, 1.4rem);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  text-transform: none;
+}
+
+.section-label::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  flex: 0 0 auto;
+  background: var(--blue);
+  border-radius: 50%;
+}
+
+/* Warm-accent variant for sections associated with the Prompting Process
+   family — orange instead of blue. */
+.section-label.is-prompt {
+  color: var(--orange);
+}
+.section-label.is-prompt::before {
+  background: var(--orange);
+}
+
+.section-heading {
+  max-width: 720px;
+  margin-bottom: clamp(40px, 5vw, 60px);
+}
+
+.section-heading p {
+  color: var(--muted);
+  font-size: 1.02rem;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   Device frame — wraps each Figma-exported screen mockup
+   so it reads as a real phone, not a flat image.
+   ============================================================ */
+
+.device {
+  --device-width: 280px;
+  --bezel: 11px;
+  --inner-radius: 30px;
+
+  position: relative;
+  display: inline-block;
+  flex: 0 0 auto;
+  margin: 0;
+  padding: var(--bezel);
+  width: var(--device-width);
+  background: linear-gradient(160deg, #1a2336 0%, #0a1322 100%);
+  border-radius: calc(var(--inner-radius) + var(--bezel));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.4),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+    var(--shadow-md);
+  line-height: 0;
+  vertical-align: top;
+}
+
+.device::before {
+  /* Dynamic Island */
+  content: "";
+  position: absolute;
+  top: calc(var(--bezel) + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 84px;
+  height: 22px;
+  background: #050a17;
+  border-radius: 999px;
+  z-index: 2;
+}
+
+.device > img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--inner-radius);
+  display: block;
+}
+
+.device.is-tilt-left  { transform: rotate(-2deg); }
+.device.is-tilt-right { transform: rotate( 2deg); }
+.device.is-lifted     { transform: translateY(-22px); }
+
+/* ============================================================
+   Hero
+   ============================================================ */
+
+.hero {
+  min-height: 100vh;
+  padding: clamp(48px, 6vh, 72px) 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 320px);
+  align-items: center;
+  gap: clamp(32px, 5vw, 64px);
+}
+
+.hero-copy { max-width: 520px; }
+
+.hero h1 {
+  margin: 6px 0 26px;
+  color: var(--navy);
+  font-size: clamp(3rem, 6.4vw, 5.4rem);
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+}
+
+.hero-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 32px;
+}
+
+.hero-meta div {
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--panel);
+  box-shadow: var(--shadow-sm);
+}
+
+.hero-meta span {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero-meta strong {
+  display: block;
+  color: var(--navy);
+  font-size: 0.98rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.hero-media {
+  display: flex;
+  justify-content: center;
+}
+
+.hero-media .device {
+  --device-width: 250px;
+  transform: rotate(3deg);
+  transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-media .device:hover { transform: rotate(0deg); }
+
+/* ============================================================
+   Product Vision / Problem / Final — two-column body sections
+   ============================================================ */
+
+.product-vision,
+.problem-section,
+.final-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(16px, 2vh, 28px);
+}
+
+.text-stack {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.text-block,
+.persona-card,
+.statement,
+.takeaway-card,
+.prompt-list {
+  padding: 22px 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--panel);
+  box-shadow: var(--shadow-sm);
+}
+
+.text-block {
+  padding: 22px 22px 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.text-block h2 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.text-block p,
+.persona-card dd,
+.statement p,
+.takeaway-card p,
+.prompt-list p {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.statement {
+  padding: clamp(24px, 3.5vw, 36px);
+}
+
+.statement p + p { margin-top: 12px; }
+
+.statement p {
+  color: var(--navy);
+  font-size: clamp(1rem, 1.45vw, 1.18rem);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+mark {
+  padding: 0.05em 0.25em;
+  background: var(--highlight);
+  border-radius: 4px;
+  color: var(--navy);
+  font-weight: 600;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* ============================================================
+   Persona cards
+   ============================================================ */
+
+.persona-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.persona-card {
+  padding: 24px 26px 26px;
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+  gap: 18px 22px;
+  align-items: start;
+}
+
+.persona-head {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 4px;
+}
+
+.persona-head .avatar { margin: 0; }
+
+.persona-head-text { min-width: 0; }
+
+.persona-type {
+  margin: 0 0 4px;
+  font-size: 0.62rem;
+}
+
+.persona-card h2 {
+  margin: 0;
+  font-size: 1.35rem;
+  line-height: 1.05;
+}
+
+.avatar {
+  width: 76px;
+  height: 76px;
+  flex: 0 0 auto;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 2px solid var(--panel);
+  box-shadow: 0 8px 22px -8px rgba(15, 23, 42, 0.28);
+}
+
+.avatar svg { width: 100%; height: 100%; display: block; }
+
+dl {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 22px;
+  margin: 0;
+}
+
+dl > div { min-width: 0; }
+
+dt {
+  margin: 0 0 2px;
+  color: var(--ink);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+dd {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   User flow image
+   ============================================================ */
+
+.flow-graphic {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flow-graphic img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* ============================================================
+   Image section — a single full-section image (e.g. exported
+   Figma slide). Replaces the section header + content with a
+   single edge-to-edge centered image so the slide's own
+   typography carries the section.
+   ============================================================ */
+
+.image-section {
+  width: 100%;
+  min-height: 100vh;
+  padding: clamp(40px, 5vh, 64px) clamp(24px, 4vw, 56px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.image-section figure {
+  margin: 0;
+  width: 100%;
+  max-width: 1440px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-section img {
+  width: 100%;
+  height: auto;
+  max-height: 92vh;
+  object-fit: contain;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: high-quality;
+}
+
+/* Stacked variant — small title image above main body image (e.g. the
+   Large-Scale Overview slide where Figma exported the title and the
+   diagram separately). Title shrinks to its natural size and pins
+   slightly left; body fills available width below. */
+.image-section figure.image-stack {
+  flex-direction: column;
+  align-items: stretch;
+  gap: clamp(16px, 2.5vh, 32px);
+}
+
+.image-section .image-stack-title {
+  width: auto;
+  max-width: 70%;
+  max-height: 64px;
+  align-self: flex-start;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+.image-section .image-stack-body {
+  width: 100%;
+  max-height: 70vh;
+}
+
+/* ============================================================
+   Screens section — UI mockup strips
+   ============================================================ */
+
+.screens-section {
+  width: 100%;
+  padding: 0;
+  background:
+    radial-gradient(120% 50% at 50% 0%, rgba(54, 126, 255, 0.05), transparent 65%),
+    var(--soft);
+}
+
+.ui-slide {
+  width: min(1080px, calc(100% - 64px));
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: clamp(48px, 6vh, 72px) 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 1px solid var(--line);
+}
+
+.ui-slide:first-of-type { border-top: 0; }
+
+.slide-title {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 2vw, 24px);
+  margin-bottom: clamp(28px, 4vh, 48px);
+}
+
+.slide-title > span {
+  width: clamp(32px, 3.2vw, 46px);
+  height: clamp(32px, 3.2vw, 46px);
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--navy);
+  position: relative;
+}
+
+.slide-title > span::after {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.18), transparent 65%);
+}
+
+.slide-title h2 {
+  margin: 0;
+  color: var(--navy);
+  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+
+.mockup-strip {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: clamp(14px, 2vw, 28px);
+  flex-wrap: wrap;
+}
+
+/* Smaller device width inside strips so multiple phones fit cleanly */
+.mockup-strip .device { --device-width: 184px; }
+
+/* Captioned variants (Alt today, Filter) */
+.captioned {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.captioned .device { --device-width: 144px; }
+
+.captioned figcaption {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--navy);
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.captioned figcaption::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--orange);
+}
+
+/* ============================================================
+   Large-scale overview / Process flow
+   ============================================================ */
+
+.overview-section {
+  width: min(960px, calc(100% - 64px));
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: clamp(48px, 6vh, 72px) 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.overview-title { margin-bottom: clamp(28px, 4vh, 48px); }
+
+.process-flow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(14px, 1.6vw, 22px);
+  align-items: stretch;
+  counter-reset: step;
+}
+
+.process-box {
+  position: relative;
+  padding: 22px 20px 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--panel);
+  box-shadow: var(--shadow-sm);
+  color: var(--navy);
+  font-size: 0.94rem;
+  font-weight: 500;
+  line-height: 1.4;
+  counter-increment: step;
+}
+
+.process-box::before {
+  content: "0" counter(step);
+  display: block;
+  margin-bottom: 10px;
+  color: var(--orange);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  font-family: var(--type-display);
+}
+
+.process-arrow {
+  display: none;
+}
+
+/* ============================================================
+   Prompting Process
+   ============================================================ */
+
+.prompt-section {
+  width: 100%;
+  min-height: 100vh;
+  padding-top: clamp(48px, 6vh, 72px);
+  padding-bottom: clamp(48px, 6vh, 72px);
+  padding-right: max(32px, calc((100vw - 960px) / 2));
+  padding-left: max(32px, calc((100vw - 960px) / 2));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background:
+    linear-gradient(180deg, rgba(54, 126, 255, 0.04), transparent 60%),
+    var(--paper);
+}
+
+.prompt-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+  gap: clamp(24px, 3vw, 40px);
+  align-items: start;
+}
+
+.prompt-list { padding: 20px 22px; }
+
+.prompt-list p {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--navy);
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.prompt-list p:first-child { padding-top: 0; }
+.prompt-list p:last-child { padding-bottom: 0; border-bottom: 0; }
+
+.prompt-images {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.prompt-images figure {
+  margin: 0;
+  overflow: hidden;
+  line-height: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: #2a2a2a;
+  box-shadow: var(--shadow-md);
+}
+
+.prompt-images img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* ============================================================
+   Final takeaway
+   ============================================================ */
+
+.takeaway-card {
+  padding: clamp(28px, 4vw, 40px);
+  background: linear-gradient(160deg, var(--navy), var(--navy-soft));
+  border: 0;
+  color: #f7f4ed;
+  box-shadow: var(--shadow-md);
+}
+
+.takeaway-card p {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   Reveal on scroll
+   ============================================================ */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+
+@media (max-width: 1000px) {
+  .hero,
+  .product-vision,
+  .problem-section,
+  .final-section,
+  .prompt-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .hero { min-height: 0; padding-top: 72px; }
+
+  .hero-media .device { --device-width: min(70vw, 280px); }
+
+  .persona-grid,
+  .prompt-images {
+    grid-template-columns: 1fr;
+  }
+
+  .process-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .mockup-strip {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mockup-strip > * {
+    scroll-snap-align: center;
+  }
+
+  dl { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .hero,
+  .section { width: min(100% - 32px, 960px); }
+
+  .ui-slide { width: min(100% - 32px, 1080px); }
+
+  .hero h1 { font-size: clamp(3.4rem, 16vw, 5rem); }
+
+  .hero-meta { grid-template-columns: 1fr; }
+
+  .mockup-strip .device { --device-width: 220px; }
+
+  .captioned .device { --device-width: 200px; }
+
+  .process-flow { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

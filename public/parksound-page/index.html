@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Parksound | AI UX Prototyping Challenge</title>
+    <meta
+      name="description"
+      content="Parksound end-to-end prototype challenge for discovering free live music performances in NYC parks."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <div class="hero-copy reveal">
+          <p class="kicker">AI UX AI Prototyping Challenge</p>
+          <h1>Parksound</h1>
+          <div class="hero-meta" aria-label="Project role and tools">
+            <div>
+              <span>Role</span>
+              <strong>UX/UI Design, AI UX Prototyping</strong>
+            </div>
+            <div>
+              <span>Used Platforms</span>
+              <strong>Figma Make, Figma Design</strong>
+            </div>
+          </div>
+        </div>
+        <div class="hero-media reveal" style="--delay: 120ms">
+          <figure class="device hero-splash">
+            <img src="assets/screens/6fc45ab2aaf6aabb065b50f57492a498d7f2e9fe.png" alt="Parksound splash screen." />
+          </figure>
+        </div>
+      </section>
+
+      <section class="section product-vision">
+        <div class="section-label">Product Vision</div>
+        <div class="text-stack">
+          <article class="text-block reveal">
+            <h2>Overview</h2>
+            <p>
+              A mobile-first platform that connects low-income NYC residents to free live music
+              happening in their local parks.
+            </p>
+          </article>
+          <article class="text-block reveal" style="--delay: 80ms">
+            <h2>Value Proposition</h2>
+            <p>
+              Removes the barriers of cost, awareness, and access that keep many New Yorkers from
+              the city's rich live-music scene.
+            </p>
+          </article>
+          <article class="text-block reveal" style="--delay: 160ms">
+            <h2>North-Star Workflow</h2>
+            <p>
+              Open the app, filter nearby shows by distance, pick one happening today or this week,
+              and head to the park.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Persona</div>
+        <div class="persona-grid">
+          <article class="persona-card reveal">
+            <div class="persona-head">
+              <div class="avatar" aria-hidden="true">
+                <svg viewBox="0 0 120 120" role="img" aria-label="Lina">
+                  <defs>
+                    <radialGradient id="lina-bg" cx="35%" cy="30%" r="85%">
+                      <stop offset="0%" stop-color="#fff1dc" />
+                      <stop offset="55%" stop-color="#ffd1a4" />
+                      <stop offset="100%" stop-color="#f1995f" />
+                    </radialGradient>
+                    <linearGradient id="lina-hair" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stop-color="#2c1810" />
+                      <stop offset="100%" stop-color="#160a05" />
+                    </linearGradient>
+                    <linearGradient id="lina-face" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stop-color="#ffd6ac" />
+                      <stop offset="100%" stop-color="#eaa672" />
+                    </linearGradient>
+                    <linearGradient id="lina-body" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stop-color="#6699e9" />
+                      <stop offset="100%" stop-color="#3d6fd1" />
+                    </linearGradient>
+                  </defs>
+                  <circle cx="60" cy="60" r="60" fill="url(#lina-bg)" />
+                  <path d="M16 116c0-22 16-34 44-34s44 12 44 34v8H16Z" fill="url(#lina-body)" />
+                  <ellipse cx="60" cy="80" rx="11" ry="5" fill="#d68a52" opacity="0.55" />
+                  <path d="M28 64C28 38 42 22 60 22s32 16 32 42l-4 14c-6-8-12-12-28-12s-22 4-28 12Z" fill="url(#lina-hair)" />
+                  <ellipse cx="60" cy="62" rx="22" ry="25" fill="url(#lina-face)" />
+                  <path d="M40 46c4-9 11-16 20-16s16 6 20 16l-4 6c-4-4-9-7-16-7s-12 3-16 7Z" fill="url(#lina-hair)" />
+                  <ellipse cx="46" cy="70" rx="4" ry="2.4" fill="#e06d4e" opacity="0.45" />
+                  <ellipse cx="74" cy="70" rx="4" ry="2.4" fill="#e06d4e" opacity="0.45" />
+                  <ellipse cx="51" cy="62" rx="2" ry="2.8" fill="#1a0e08" />
+                  <ellipse cx="69" cy="62" rx="2" ry="2.8" fill="#1a0e08" />
+                  <circle cx="51.6" cy="61.2" r="0.8" fill="#fff" />
+                  <circle cx="69.6" cy="61.2" r="0.8" fill="#fff" />
+                  <path d="M53 75q7 5 14 0" stroke="#1a0e08" stroke-width="1.6" fill="none" stroke-linecap="round" />
+                </svg>
+              </div>
+              <div class="persona-head-text">
+                <p class="persona-type">Audience · Concert Lover</p>
+                <h2>Lina</h2>
+              </div>
+            </div>
+            <dl>
+              <div><dt>Age</dt><dd>24</dd></div>
+              <div><dt>Location</dt><dd>Queens, NY</dd></div>
+              <div><dt>Profile</dt><dd>Bubble tea shop worker; loves music but can't afford tickets.</dd></div>
+              <div><dt>Goals</dt><dd>Catch free live music in NYC parks; know when and where.</dd></div>
+              <div><dt>Pain Points</dt><dd>Stumbles on shows by chance; hates travelling for nothing.</dd></div>
+              <div><dt>Needs from App</dt><dd>Simple list of today/this weekend's park shows with time, place, and type.</dd></div>
+            </dl>
+          </article>
+          <article class="persona-card reveal" style="--delay: 100ms">
+            <div class="persona-head">
+              <div class="avatar" aria-hidden="true">
+                <svg viewBox="0 0 120 120" role="img" aria-label="Miguel Rivera">
+                  <defs>
+                    <radialGradient id="miguel-bg" cx="35%" cy="30%" r="85%">
+                      <stop offset="0%" stop-color="#eaf1ff" />
+                      <stop offset="55%" stop-color="#a8c2f4" />
+                      <stop offset="100%" stop-color="#5d83cd" />
+                    </radialGradient>
+                    <linearGradient id="miguel-hair" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stop-color="#3b2418" />
+                      <stop offset="100%" stop-color="#1f120a" />
+                    </linearGradient>
+                    <linearGradient id="miguel-face" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stop-color="#c9926a" />
+                      <stop offset="100%" stop-color="#a4724c" />
+                    </linearGradient>
+                    <linearGradient id="miguel-body" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stop-color="#1c8a4d" />
+                      <stop offset="100%" stop-color="#0c5e34" />
+                    </linearGradient>
+                  </defs>
+                  <circle cx="60" cy="60" r="60" fill="url(#miguel-bg)" />
+                  <path d="M16 116c0-22 16-34 44-34s44 12 44 34v8H16Z" fill="url(#miguel-body)" />
+                  <ellipse cx="60" cy="80" rx="11" ry="5" fill="#7f5436" opacity="0.55" />
+                  <path d="M30 60c0-22 13-36 30-36s30 14 30 36v6c-4-6-10-10-30-10s-26 4-30 10Z" fill="url(#miguel-hair)" />
+                  <ellipse cx="60" cy="62" rx="22" ry="25" fill="url(#miguel-face)" />
+                  <path d="M38 50c4-12 12-18 22-18s18 6 22 18l-3 4c-6-6-12-9-19-9s-13 3-19 9Z" fill="url(#miguel-hair)" />
+                  <path d="M44 73c3 8 9 12 16 12s13-4 16-12c-5 3-10 4-16 4s-11-1-16-4Z" fill="url(#miguel-hair)" opacity="0.4" />
+                  <ellipse cx="51" cy="62" rx="2" ry="2.8" fill="#1a0e08" />
+                  <ellipse cx="69" cy="62" rx="2" ry="2.8" fill="#1a0e08" />
+                  <circle cx="51.6" cy="61.2" r="0.8" fill="#fff" />
+                  <circle cx="69.6" cy="61.2" r="0.8" fill="#fff" />
+                  <path d="M53 76q7 4 14 0" stroke="#1a0e08" stroke-width="1.6" fill="none" stroke-linecap="round" />
+                  <path d="M30 96l46-16" stroke="#f0b537" stroke-width="3" stroke-linecap="round" opacity="0.85" />
+                </svg>
+              </div>
+              <div class="persona-head-text">
+                <p class="persona-type">Artist · Street Performer</p>
+                <h2>Miguel Rivera</h2>
+              </div>
+            </div>
+            <dl>
+              <div><dt>Age</dt><dd>31</dd></div>
+              <div><dt>Location</dt><dd>Bronx, NY</dd></div>
+              <div><dt>Profile</dt><dd>Guitarist; lives off gigs and tips, often plays in parks.</dd></div>
+              <div><dt>Goals</dt><dd>Grow his audience and earnings; get found beyond social.</dd></div>
+              <div><dt>Pain Points</dt><dd>No central place to post shows; sometimes plays to no one.</dd></div>
+              <div><dt>Needs from App</dt><dd>One-tap way to post a park show and see how many people care.</dd></div>
+            </dl>
+          </article>
+        </div>
+      </section>
+
+      <section class="section problem-section">
+        <div class="section-label">Problem Statement</div>
+        <div class="statement reveal">
+          <p>
+            For many <mark>low-income New Yorkers</mark>, attending
+            <mark>live music and cultural events</mark> is <mark>financially out of reach</mark>.
+          </p>
+          <p>
+            The city and local performers host <mark>free concerts in parks</mark> regularly, but they're
+            <mark>poorly aggregated</mark>, <mark>inconsistently advertised</mark>, and scattered across
+            websites and social feeds.
+          </p>
+          <p>As a result, many of these shows <mark>go unnoticed</mark>.</p>
+        </div>
+      </section>
+
+      <section class="image-section">
+        <figure class="reveal">
+          <img
+            src="assets/sections/user-flow.png"
+            alt="User Flow — the process for users to search for an event."
+          />
+        </figure>
+      </section>
+
+      <section class="image-section">
+        <figure class="reveal">
+          <img
+            src="assets/sections/on-boarding.png"
+            alt="On boarding Page — four phones walking through the NYC Parks Music intro, role selection, performer welcome, and completion screens."
+          />
+        </figure>
+      </section>
+
+      <section class="image-section">
+        <figure class="reveal">
+          <img
+            src="assets/sections/posting-intake.png"
+            alt="Posting intake from Performers — four phone screens of the performer submission flow plus an alternative Today tab design."
+          />
+        </figure>
+      </section>
+
+      <section class="image-section">
+        <figure class="reveal">
+          <img
+            src="assets/sections/calendar-parks.png"
+            alt="Calendar and Parks — four park-discovery and event-listing screens with a Sort Events filter callout."
+          />
+        </figure>
+      </section>
+
+      <section class="image-section">
+        <figure class="reveal">
+          <img
+            src="assets/sections/ls-overview.png"
+            alt="Prompting Process: Large-Scale Overview — four dashed-outline cards showing the prompting steps linked by orange arrows."
+          />
+        </figure>
+      </section>
+
+      <section class="image-section">
+        <figure class="reveal">
+          <img
+            src="assets/sections/prompt-screenshots.png"
+            alt="Prompting Process: Prompt Screenshots — the four prompts used to drive the design, plus the takeaway line."
+          />
+        </figure>
+      </section>
+
+      <section class="section final-section">
+        <div class="section-label">Takeaways</div>
+        <div class="takeaway-card reveal">
+          <p>use a clear structure, be specific when iterating, and don't be afraid to undo!</p>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

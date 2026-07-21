@@ -25,6 +25,10 @@ export interface Project {
    * Use this for sections whose image is much taller than one viewport (e.g.
    * full-page mockups) so they scroll freely instead of snapping. */
   noSnapSections?: number[]
+  /** Optional URL override for the project card link. When set, the card
+   * opens this URL directly (typically a standalone HTML page bundled under
+   * /public/) instead of the /work/[slug] Next.js subpage. */
+  externalUrl?: string
 }
 
 export const projects: Project[] = [
@@ -108,7 +112,7 @@ export const projects: Project[] = [
     tools: ['Figma', 'Framer', 'OpenAI API'],
     image: '/projects/parksound.png',
     imagePosition: 'center',
-    fullBleed: true,
+    externalUrl: '/parksound-page/index.html',
   },
 ]
 

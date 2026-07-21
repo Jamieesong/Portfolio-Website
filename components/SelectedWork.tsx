@@ -19,11 +19,23 @@ export default function SelectedWork() {
 
       {/* Vertical stack — one project per scroll */}
       <div className="px-10 md:px-16 py-12 flex flex-col gap-16 md:gap-20">
-        {projects.map((p) => (
-          <Link key={p.slug} href={`/work/${p.slug}`} className="block">
-            <ProjectCard {...p} />
-          </Link>
-        ))}
+        {projects.map((p) =>
+          p.externalUrl ? (
+            <a
+              key={p.slug}
+              href={p.externalUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block"
+            >
+              <ProjectCard {...p} />
+            </a>
+          ) : (
+            <Link key={p.slug} href={`/work/${p.slug}`} className="block">
+              <ProjectCard {...p} />
+            </Link>
+          )
+        )}
 
         {/* Coming soon — small de-emphasized closing note */}
         <article className="group flex flex-col items-center gap-3 w-full max-w-xs mx-auto pt-4 pb-2 opacity-70">
