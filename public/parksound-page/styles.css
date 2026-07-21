@@ -3,6 +3,46 @@
    Editorial layout for an end-to-end AI UX prototype.
    ============================================================ */
 
+/* Floating top nav — matches the portfolio home page's FloatingNav so
+   the parksound case study still lives inside the site's shell.
+   Both links jump back to the portfolio root (Work / About sections). */
+.floating-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px clamp(24px, 4vw, 64px);
+  pointer-events: none;
+}
+.floating-nav-link {
+  pointer-events: auto;
+  color: var(--ink);
+  font-family: ui-monospace, "SF Mono", Menlo, Monaco, monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: rgba(15, 23, 42, 0.3);
+  transition: color 200ms ease, text-decoration-color 200ms ease;
+}
+.floating-nav-link:hover {
+  color: var(--orange);
+  text-decoration-color: var(--orange);
+}
+.floating-nav-time {
+  font-family: ui-monospace, "SF Mono", Menlo, Monaco, monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  color: rgba(15, 23, 42, 0.35);
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+}
+
 :root {
   --ink: #0f172a;
   --navy: #001f45;
