@@ -66,8 +66,7 @@ a { color: inherit; }
 
 .section {
   position: relative;
-  min-height: 100vh;
-  padding: clamp(48px, 6vh, 72px) 0;
+  padding: clamp(56px, 8vh, 96px) 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -117,23 +116,23 @@ p { margin: 0; line-height: 1.65; }
 /* Section label — mirrors the colored dot-prefixed title used inside the
    exported Figma slides so the HTML sections read as the same family. */
 .section-label {
-  margin: 0 0 clamp(16px, 2.4vh, 26px);
+  margin: 0 0 clamp(24px, 3.5vh, 44px);
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: clamp(14px, 1.4vw, 22px);
   color: var(--blue);
   font-family: var(--type-display);
-  font-size: clamp(1.05rem, 1.6vw, 1.4rem);
-  font-weight: 600;
-  letter-spacing: -0.015em;
-  line-height: 1.15;
+  font-size: clamp(2.4rem, 4.6vw, 3.8rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
   text-transform: none;
 }
 
 .section-label::before {
   content: "";
-  width: 8px;
-  height: 8px;
+  width: clamp(14px, 1.4vw, 20px);
+  height: clamp(14px, 1.4vw, 20px);
   flex: 0 0 auto;
   background: var(--blue);
   border-radius: 50%;
@@ -468,8 +467,7 @@ dd {
 
 .image-section {
   width: 100%;
-  min-height: 100vh;
-  padding: clamp(40px, 5vh, 64px) clamp(24px, 4vw, 56px);
+  padding: clamp(24px, 3.5vh, 40px) clamp(24px, 4vw, 56px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -537,8 +535,7 @@ dd {
 .ui-slide {
   width: min(1080px, calc(100% - 64px));
   margin: 0 auto;
-  min-height: 100vh;
-  padding: clamp(48px, 6vh, 72px) 0;
+  padding: clamp(56px, 8vh, 96px) 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -574,8 +571,8 @@ dd {
 .slide-title h2 {
   margin: 0;
   color: var(--navy);
-  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
-  font-weight: 800;
+  font-size: clamp(2.4rem, 4.6vw, 3.8rem);
+  font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.025em;
 }
@@ -626,8 +623,7 @@ dd {
 .overview-section {
   width: min(960px, calc(100% - 64px));
   margin: 0 auto;
-  min-height: 100vh;
-  padding: clamp(48px, 6vh, 72px) 0;
+  padding: clamp(56px, 8vh, 96px) 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -678,9 +674,8 @@ dd {
 
 .prompt-section {
   width: 100%;
-  min-height: 100vh;
-  padding-top: clamp(48px, 6vh, 72px);
-  padding-bottom: clamp(48px, 6vh, 72px);
+  padding-top: clamp(56px, 8vh, 96px);
+  padding-bottom: clamp(56px, 8vh, 96px);
   padding-right: max(32px, calc((100vw - 960px) / 2));
   padding-left: max(32px, calc((100vw - 960px) / 2));
   display: flex;
