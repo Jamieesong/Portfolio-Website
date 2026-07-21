@@ -14,6 +14,17 @@ export interface Project {
    * portfolio image edge-to-edge — used for projects whose PDF already contains
    * the title, description, and credits. */
   fullBleed?: boolean
+  /** When true, the subpage renders portfolio sections with scroll-triggered
+   * fade/slide animations as each image enters the viewport. */
+  interactive?: boolean
+  /** Optional 1-indexed groups of consecutive section images that should render
+   * as one continuous block (no gap between them) inside an interactive subpage.
+   * Example: [[7,8,9], [10,11,12]] glues sections 7-9 and 10-12 together. */
+  sectionGroups?: number[][]
+  /** Optional 1-indexed block indices to exclude from scroll-snap centering.
+   * Use this for sections whose image is much taller than one viewport (e.g.
+   * full-page mockups) so they scroll freely instead of snapping. */
+  noSnapSections?: number[]
 }
 
 export const projects: Project[] = [
@@ -59,7 +70,10 @@ export const projects: Project[] = [
     tools: ['Figma', 'Webflow', 'Illustrator'],
     image: '/projects/santa-maria-novella.png',
     imagePosition: 'center 35%',
-    fullBleed: true,
+    interactive: true,
+    // Sections 6–9 are full-page mockups much taller than one viewport;
+    // they scroll freely instead of snapping to centre.
+    noSnapSections: [6, 7, 8, 9],
   },
   {
     slug: 'parksound',
@@ -74,21 +88,27 @@ export const projects: Project[] = [
     tools: ['Figma', 'Framer', 'OpenAI API'],
     image: '/projects/parksound.png',
     imagePosition: 'center',
-    fullBleed: true,
+    interactive: true,
   },
   {
-    slug: 'etmon',
+    slug: 'ilkwang',
     number: '05',
-    title: 'ETMON',
-    subtitle: 'Seasonal Promotion',
+    title: 'Ilkwang Lighting',
+    subtitle: 'Website Redesign',
     description:
-      'Multi-format digital assets for seasonal campaigns and lifestyle storytelling — a flexible system spanning landing pages, social cuts, and editorial layouts.',
-    tag: 'Promotion',
-    year: '2023',
-    role: 'Visual designer',
-    tools: ['Figma', 'Photoshop', 'Illustrator'],
-    image: '/projects/etmon.webp',
+      "A full website redesign for Ilkwang Lighting — restructuring information architecture and modernising the visual system to make a heritage lighting brand feel approachable, scrollable, and confident online.",
+    tag: 'Website',
+    year: '2025',
+    role: 'UI / UX designer',
+    tools: ['Figma', 'Illustrator', 'Notion'],
+    image: '/projects/ilkwang.jpg',
     imagePosition: 'center',
+    interactive: true,
+    sectionGroups: [
+      [7, 8, 9],
+      [10, 11, 12],
+      [13, 14, 15, 16],
+    ],
   },
 ]
 

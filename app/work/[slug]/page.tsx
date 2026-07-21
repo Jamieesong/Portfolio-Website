@@ -3,6 +3,7 @@ import path from 'path'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import FloatingNav from '@/components/FloatingNav'
+import InteractiveSections from '@/components/InteractiveSections'
 import {
   projects,
   getProject,
@@ -38,12 +39,13 @@ export default function ProjectPage({
   const { prev, next } = getAdjacentProjects(params.slug)
 
   const fullBleed = project.fullBleed
+  const interactive = project.interactive
 
   return (
     <main className="bg-bone min-h-screen w-full border-b border-ink/25">
       <FloatingNav />
 
-      {!fullBleed && (
+      {!fullBleed && !interactive && (
         <>
           {/* Header — project intro */}
           <header className="pt-32 pb-16 px-8 md:px-16 max-w-3xl mx-auto text-center">
@@ -86,12 +88,15 @@ export default function ProjectPage({
           image at 80% width centered, with a heavily blurred copy of the
           same image filling the surrounding space so the colors continue
           seamlessly into the edges. Standard projects sit in a max-w-4xl
-          centered column. */}
+          centered column. Interactive projects fade/slide each image in as
+          it scrolls into view. */}
       <section
         className={
           fullBleed
             ? 'flex flex-col items-center'
-            : 'py-16 px-4 md:px-12 flex flex-col items-center gap-6 md:gap-10'
+            : interactive
+              ? 'flex flex-col items-center'
+              : 'py-16 px-4 md:px-12 flex flex-col items-center gap-6 md:gap-10'
         }
       >
         {images.length === 0 ? (
@@ -107,6 +112,13 @@ export default function ProjectPage({
               — they&apos;ll appear here automatically, sorted by filename.
             </p>
           </div>
+        ) : interactive ? (
+          <InteractiveSections
+            images={images}
+            title={project.title}
+            groups={project.sectionGroups}
+            noSnapSections={project.noSnapSections}
+          />
         ) : fullBleed ? (
           images.map((src, i) => (
             <div key={src} className="relative w-full overflow-hidden">
@@ -141,7 +153,7 @@ export default function ProjectPage({
       </section>
 
       {/* Prev / Next nav */}
-      <nav className="px-8 md:px-16 py-16 border-t border-ink/15 flex flex-col sm:flex-row items-center justify-between gap-6 max-w-5xl mx-auto">
+      <nav className="relative z-10 bg-bone px-8 md:px-16 py-16 border-t border-ink/15 flex flex-col sm:flex-row items-center justify-between gap-6 max-w-5xl mx-auto">
         <Link
           href="/#work"
           className="font-data text-[10px] uppercase tracking-[0.2em] text-ink/50 hover:text-terra transition-colors duration-300"
