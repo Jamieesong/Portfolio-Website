@@ -66,6 +66,7 @@ a { color: inherit; }
 
 .section {
   position: relative;
+  min-height: 100vh;
   padding: clamp(56px, 8vh, 96px) 0;
   display: flex;
   flex-direction: column;
@@ -116,23 +117,23 @@ p { margin: 0; line-height: 1.65; }
 /* Section label — mirrors the colored dot-prefixed title used inside the
    exported Figma slides so the HTML sections read as the same family. */
 .section-label {
-  margin: 0 0 clamp(24px, 3.5vh, 44px);
+  margin: 0 0 clamp(20px, 3vh, 36px);
   display: inline-flex;
   align-items: center;
-  gap: clamp(14px, 1.4vw, 22px);
+  gap: clamp(12px, 1.2vw, 18px);
   color: var(--blue);
   font-family: var(--type-display);
-  font-size: clamp(2.4rem, 4.6vw, 3.8rem);
+  font-size: clamp(1.9rem, 3vw, 2.6rem);
   font-weight: 700;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.02em;
   line-height: 1.05;
   text-transform: none;
 }
 
 .section-label::before {
   content: "";
-  width: clamp(14px, 1.4vw, 20px);
-  height: clamp(14px, 1.4vw, 20px);
+  width: clamp(10px, 1vw, 14px);
+  height: clamp(10px, 1vw, 14px);
   flex: 0 0 auto;
   background: var(--blue);
   border-radius: 50%;
@@ -467,7 +468,8 @@ dd {
 
 .image-section {
   width: 100%;
-  padding: clamp(24px, 3.5vh, 40px) clamp(24px, 4vw, 56px);
+  min-height: 100vh;
+  padding: clamp(32px, 4.5vh, 56px) clamp(24px, 4vw, 56px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -535,6 +537,7 @@ dd {
 .ui-slide {
   width: min(1080px, calc(100% - 64px));
   margin: 0 auto;
+  min-height: 100vh;
   padding: clamp(56px, 8vh, 96px) 0;
   display: flex;
   flex-direction: column;
@@ -571,10 +574,10 @@ dd {
 .slide-title h2 {
   margin: 0;
   color: var(--navy);
-  font-size: clamp(2.4rem, 4.6vw, 3.8rem);
+  font-size: clamp(1.9rem, 3vw, 2.6rem);
   font-weight: 700;
   line-height: 1.05;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.02em;
 }
 
 .mockup-strip {
@@ -623,6 +626,7 @@ dd {
 .overview-section {
   width: min(960px, calc(100% - 64px));
   margin: 0 auto;
+  min-height: 100vh;
   padding: clamp(56px, 8vh, 96px) 0;
   display: flex;
   flex-direction: column;
@@ -674,6 +678,7 @@ dd {
 
 .prompt-section {
   width: 100%;
+  min-height: 100vh;
   padding-top: clamp(56px, 8vh, 96px);
   padding-bottom: clamp(56px, 8vh, 96px);
   padding-right: max(32px, calc((100vw - 960px) / 2));
