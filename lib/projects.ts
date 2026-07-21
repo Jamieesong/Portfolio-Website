@@ -108,7 +108,7 @@ export const projects: Project[] = [
     tools: ['Figma', 'Framer', 'OpenAI API'],
     image: '/projects/parksound.png',
     imagePosition: 'center',
-    interactive: true,
+    fullBleed: true,
   },
 ]
 
