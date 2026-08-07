@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import FloatingNav from '@/components/FloatingNav'
 import InteractiveSections from '@/components/InteractiveSections'
+import CaseStudyLayout from '@/components/CaseStudyLayout'
 import {
   projects,
   getProject,
@@ -40,12 +41,28 @@ export default function ProjectPage({
 
   const fullBleed = project.fullBleed
   const interactive = project.interactive
+  const caseStudy = project.caseStudy
 
   return (
     <main className="bg-bone min-h-screen w-full border-b border-ink/25">
       <FloatingNav />
 
-      {!fullBleed && !interactive && (
+      {caseStudy && project.caseStudySections && (
+        <CaseStudyLayout
+          number={project.number}
+          tag={project.tag}
+          title={project.title}
+          description={project.description}
+          role={project.role}
+          timeline={project.timeline ?? project.year}
+          tools={project.tools}
+          outcome={project.outcome ?? ''}
+          images={images}
+          sections={project.caseStudySections}
+        />
+      )}
+
+      {!caseStudy && !fullBleed && !interactive && (
         <>
           {/* Header — project intro */}
           <header className="pt-32 pb-16 px-8 md:px-16 max-w-3xl mx-auto text-center">
@@ -89,7 +106,9 @@ export default function ProjectPage({
           same image filling the surrounding space so the colors continue
           seamlessly into the edges. Standard projects sit in a max-w-4xl
           centered column. Interactive projects fade/slide each image in as
-          it scrolls into view. */}
+          it scrolls into view. Case-study projects are rendered above via
+          CaseStudyLayout and skip this block entirely. */}
+      {!caseStudy && (
       <section
         className={
           fullBleed
@@ -151,6 +170,7 @@ export default function ProjectPage({
           ))
         )}
       </section>
+      )}
 
       {/* Prev / Next nav */}
       <nav className="relative z-10 bg-bone px-8 md:px-16 py-16 border-t border-ink/15 flex flex-col sm:flex-row items-center justify-between gap-6 max-w-5xl mx-auto">

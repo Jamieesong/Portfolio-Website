@@ -29,6 +29,25 @@ export interface Project {
    * opens this URL directly (typically a standalone HTML page bundled under
    * /public/) instead of the /work/[slug] Next.js subpage. */
   externalUrl?: string
+  /** When true, the subpage renders as an editorial case study: header +
+   * Role/Timeline/Tools/Outcome summary + sticky left TOC (desktop only) +
+   * alternating-bg sections with a narrow text column and images that fill
+   * the content column. Requires `caseStudySections`. */
+  caseStudy?: boolean
+  /** Short duration string shown in the summary grid (e.g. "6 weeks"). */
+  timeline?: string
+  /** Short outcome/impact string shown in the summary grid. */
+  outcome?: string
+  /** Case-study narrative sections. Each maps a section title + intro text
+   * to a subset of the portfolio images (1-indexed within the slug's folder). */
+  caseStudySections?: CaseStudySection[]
+}
+
+export interface CaseStudySection {
+  id: string
+  title: string
+  intro: string
+  imageIndices: number[]
 }
 
 export const projects: Project[] = [
@@ -45,11 +64,52 @@ export const projects: Project[] = [
     tools: ['Figma', 'Illustrator', 'Notion'],
     image: '/projects/ilkwang.jpg',
     imagePosition: 'center',
-    interactive: true,
-    sectionGroups: [
-      [7, 8, 9],
-      [10, 11, 12],
-      [13, 14, 15, 16],
+    caseStudy: true,
+    timeline: '6 weeks',
+    outcome: 'Full site + design system refresh',
+    caseStudySections: [
+      {
+        id: 'overview',
+        title: 'Overview',
+        intro:
+          "Ilkwang Lighting is a heritage Korean lighting brand founded in 1962. The redesign refreshes their online presence with a modern, minimal visual system that reflects the craft quality of their lamps.",
+        imageIndices: [1],
+      },
+      {
+        id: 'design-system',
+        title: 'Design system',
+        intro:
+          "Built on a warm neutral palette, an elegant serif for display, and a clean sans for body — anchored by generous whitespace and edge-to-edge product photography.",
+        imageIndices: [2, 3, 4, 5, 6],
+      },
+      {
+        id: 'launch',
+        title: 'Product launch',
+        intro:
+          "The site opens on the SNOWMAN family launch — large photography and a clean grid introduce the flagship collection before the shopper drops into individual products.",
+        imageIndices: [7, 8, 9],
+      },
+      {
+        id: 'mobile',
+        title: 'Mobile experience',
+        intro:
+          "A companion mobile layout mirrors the web design language with tap-optimised navigation and a bottom bar for quick access to catalog, brand story, and cart.",
+        imageIndices: [10, 11, 12],
+      },
+      {
+        id: 'full-pages',
+        title: 'Full-page redesign',
+        intro:
+          "Product, shop, and story pages share a long-scroll editorial rhythm — big imagery, breathing room between sections, and buy actions tucked to the side so they never compete with the story.",
+        imageIndices: [13, 14, 15, 16],
+      },
+      {
+        id: 'wrap',
+        title: 'Navigation & social',
+        intro:
+          "Every page closes with a consistent nav footer linking to social feeds, brand story, and quick actions — keeping the discovery-to-purchase path short.",
+        imageIndices: [17],
+      },
     ],
   },
   {
@@ -71,13 +131,13 @@ export const projects: Project[] = [
     slug: 'gentle-monster',
     number: '03',
     title: 'Gentle Monster',
-    subtitle: 'Web Promotion',
+    subtitle: 'Web promotion',
     description:
       "A campaign site for Gentle Monster's 2024 New Collection — Gentle Jelly & Void KC6 — built around two distinct visual worlds with shared structural typography.",
     tag: 'Promotion',
     year: '2024',
-    role: 'Visual designer',
-    tools: ['Figma', 'After Effects', 'Cinema 4D'],
+    role: 'Visual Design',
+    tools: ['Photoshop', 'Figma', 'Illustrator'],
     image: '/projects/gentle-monster.avif',
     imagePosition: 'center 30%',
   },
@@ -105,11 +165,11 @@ export const projects: Project[] = [
     title: 'ParkSound AI',
     subtitle: 'AI UX Mobile App',
     description:
-      "An AI-powered iOS concept connecting NYC residents with free live park performances — recommendations tuned to weather, mood, and proximity, surfaced through a quiet conversational interface.",
+      "An AI-prototyped iOS concept that surfaces free live music in NYC parks — a two-sided app where listeners discover nearby shows and performers publish their own, designed end-to-end through structured prompting in Figma Make.",
     tag: 'AI Project',
     year: '2025',
-    role: 'UX designer',
-    tools: ['Figma', 'Framer', 'OpenAI API'],
+    role: 'UX designer · 2-person team',
+    tools: ['Figma Make', 'Figma Design'],
     image: '/projects/parksound.png',
     imagePosition: 'center',
     externalUrl: '/parksound-page/index.html',
