@@ -29,6 +29,9 @@ export interface Project {
    * opens this URL directly (typically a standalone HTML page bundled under
    * /public/) instead of the /work/[slug] Next.js subpage. */
   externalUrl?: string
+  /** When true, the subpage renders a custom case-study layout component
+   * (currently only Gentle Monster) instead of stacked portfolio images. */
+  caseStudy?: boolean
 }
 
 export const projects: Project[] = [
@@ -73,13 +76,14 @@ export const projects: Project[] = [
     title: 'Gentle Monster',
     subtitle: 'Web Promotion',
     description:
-      "A campaign site for Gentle Monster's 2024 New Collection — Gentle Jelly & Void KC6 — built around two distinct visual worlds with shared structural typography.",
-    tag: 'Promotion',
+      "A personal campaign concept for Gentle Monster's 2024 New Collection. Void KC6 and Gentle Jelly each get their own visual world, tied together by one grid and a shared editorial type system.",
+    tag: 'Personal Project',
     year: '2024',
     role: 'Visual designer',
-    tools: ['Figma', 'After Effects', 'Cinema 4D'],
+    tools: ['Figma', 'Photoshop', 'Illustrator'],
     image: '/projects/gentle-monster.avif',
     imagePosition: 'center 30%',
+    caseStudy: true,
   },
   {
     slug: 'santa-maria-novella',

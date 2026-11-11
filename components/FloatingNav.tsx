@@ -14,9 +14,11 @@ function LiveClock() {
   return <span className="tabular-nums">{time}</span>
 }
 
-export default function FloatingNav() {
+export default function FloatingNav({ adaptive = false }: { adaptive?: boolean }) {
+  // adaptive: blends against whatever is behind it so the links stay readable
+  // over both light and dark sections.
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-10 md:px-16 py-5 pointer-events-none">
+    <nav className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-10 md:px-16 py-5 pointer-events-none ${adaptive ? 'mix-blend-difference [&_a]:!text-bone [&_a]:!decoration-bone/40 [&>span]:!text-bone/50' : ''}`}>
       <a
         href="/#work"
         className="pointer-events-auto font-data text-[11px] uppercase tracking-widest text-ink hover:text-terra transition-colors duration-200 underline underline-offset-4 decoration-ink/30 hover:decoration-terra"
