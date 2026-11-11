@@ -29,15 +29,30 @@ export interface Project {
    * opens this URL directly (typically a standalone HTML page bundled under
    * /public/) instead of the /work/[slug] Next.js subpage. */
   externalUrl?: string
-  /** When true, the subpage renders a custom case-study layout component
-   * (currently only Gentle Monster) instead of stacked portfolio images. */
-  caseStudy?: boolean
+  /** Renders a custom case-study layout component instead of stacked
+   * portfolio images. */
+  caseStudy?: 'gentle-monster' | 'along'
 }
 
 export const projects: Project[] = [
   {
-    slug: 'ilkwang',
+    slug: 'along',
     number: '01',
+    title: 'Along',
+    subtitle: 'UX Research · Mobile App',
+    description:
+      'A New York walking app that adds small sidequests to the route you already take, with a companion named Lolo who grows from every walk.',
+    tag: 'UX Research',
+    year: '2026',
+    role: 'UX researcher',
+    tools: ['Figma', 'Claude', 'v0'],
+    image: '/projects/along.webp',
+    imagePosition: 'center',
+    caseStudy: 'along',
+  },
+  {
+    slug: 'ilkwang',
+    number: '02',
     title: 'Ilkwang Lighting',
     subtitle: 'Website Redesign',
     description:
@@ -57,7 +72,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'pawlog',
-    number: '02',
+    number: '03',
     title: 'Pawlog',
     subtitle: 'UX/UI Mobile App',
     description:
@@ -79,7 +94,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'gentle-monster',
-    number: '03',
+    number: '04',
     title: 'Gentle Monster',
     subtitle: 'Web Promotion',
     description:
@@ -90,11 +105,11 @@ export const projects: Project[] = [
     tools: ['Figma', 'Photoshop', 'Illustrator'],
     image: '/projects/gentle-monster.avif',
     imagePosition: 'center 30%',
-    caseStudy: true,
+    caseStudy: 'gentle-monster',
   },
   {
     slug: 'santa-maria-novella',
-    number: '04',
+    number: '05',
     title: 'Santa Maria Novella',
     subtitle: 'Website Redesign',
     description:
@@ -112,7 +127,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'parksound',
-    number: '05',
+    number: '06',
     title: 'ParkSound AI',
     subtitle: 'AI UX Mobile App',
     description:

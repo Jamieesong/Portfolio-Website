@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation'
 import FloatingNav from '@/components/FloatingNav'
 import InteractiveSections from '@/components/InteractiveSections'
 import GentleMonsterCase from '@/components/GentleMonsterCase'
+import AlongCase from '@/components/AlongCase'
 import {
   projects,
   getProject,
@@ -45,9 +46,11 @@ export default function ProjectPage({
 
   return (
     <main className="bg-bone min-h-screen w-full border-b border-ink/25">
-      <FloatingNav adaptive={caseStudy} />
+      <FloatingNav adaptive={caseStudy === 'gentle-monster'} />
 
-      {caseStudy && (
+      {caseStudy === 'along' && <AlongCase />}
+
+      {caseStudy === 'gentle-monster' && (
         <GentleMonsterCase
           number={project.number}
           tag={project.tag}
