@@ -69,6 +69,13 @@ export const projects: Project[] = [
     image: '/projects/pawlog.png',
     imagePosition: 'center',
     interactive: true,
+    // Slides whose illustration or background runs across the slide edge
+    // stay joined: 1–2 (walking scene), 6–7 (orange arrow), 13–16 (cloud band).
+    sectionGroups: [
+      [1, 2],
+      [6, 7],
+      [13, 14, 15, 16],
+    ],
   },
   {
     slug: 'gentle-monster',
