@@ -65,10 +65,10 @@ export const projects: Project[] = [
     tag: 'Application',
     year: '2025',
     role: 'Product designer',
-    tools: ['Figma', 'Principle', 'Notion'],
+    tools: ['Figma', 'Illustrator', 'Photoshop'],
     image: '/projects/pawlog.png',
     imagePosition: 'center',
-    fullBleed: true,
+    interactive: true,
   },
   {
     slug: 'gentle-monster',
@@ -76,7 +76,7 @@ export const projects: Project[] = [
     title: 'Gentle Monster',
     subtitle: 'Web Promotion',
     description:
-      "A personal campaign concept for Gentle Monster's 2024 New Collection. Void KC6 and Gentle Jelly each get their own visual world, tied together by one grid and a shared editorial type system.",
+      "A personal campaign page for Gentle Monster's 2024 collection, designed around its two new lines: Void KC6 and Gentle Jelly.",
     tag: 'Personal Project',
     year: '2024',
     role: 'Visual designer',

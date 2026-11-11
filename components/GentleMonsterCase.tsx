@@ -13,16 +13,16 @@ const META = [
 
 const GOALS = [
   {
-    title: 'Two worlds, one page',
-    body: 'Give each collection its own background and pacing, tied together by one grid and one type system.',
+    title: 'Separate the two lines',
+    body: 'Each line gets its own background and layout, but both share the same grid and fonts.',
   },
   {
-    title: 'Product first',
-    body: 'Pair every campaign shot with a clean product cut, model name, and price so the eyewear stays the hero.',
+    title: 'Show the product clearly',
+    body: 'Every model photo sits next to a product shot, the model name, and the price.',
   },
   {
-    title: 'Editorial rhythm',
-    body: 'Mix large campaign imagery with small detail shots so a long scroll never feels repetitive.',
+    title: 'Keep the scroll interesting',
+    body: 'Big campaign photos and small product shots take turns so the long page never feels repetitive.',
   },
 ]
 
@@ -33,78 +33,50 @@ const COLORS = [
   { name: 'Fog', hex: '#F3F4F6' },
 ]
 
-type Callout = { x: number; y: number; label: string }
-
 const SECTIONS: {
   n: string
   title: string
   note: string
-  details: string[]
   src: string
   bg: string
   dark: boolean
   flip: boolean
-  callouts: Callout[]
 }[] = [
   {
     n: '01',
     title: 'Campaign intro',
-    note: 'The page opens on the full wordmark and a single striking campaign image, then slows down with a framed portrait and a quiet serif headline.',
-    details: ['Wordmark hero', 'Framed portrait', 'Serif headline'],
+    note: 'The page opens with the logo and one big campaign photo. A round portrait and a short headline then introduce the new collection.',
     src: `${ASSET}/section-1.webp`,
     bg: '#232323',
     dark: true,
     flip: false,
-    callouts: [
-      { x: 68, y: 30, label: 'Campaign hero' },
-      { x: 18, y: 50, label: 'Framed portrait' },
-      { x: 76, y: 64.5, label: 'Serif headline + copy' },
-    ],
   },
   {
     n: '02',
     title: 'Void KC6 world',
-    note: 'A dark, sculptural chapter. Each model gets a campaign shot, a clean product cut, and a short description, laid out on an asymmetric grid.',
-    details: ['Charcoal palette', 'Asymmetric grid', 'Product + model pairs'],
+    note: 'A dark section for Void KC6. Each model has a campaign photo, a product shot, a short description, and the price.',
     src: `${ASSET}/section-2.webp`,
     bg: '#313131',
     dark: true,
     flip: true,
-    callouts: [
-      { x: 72, y: 3.5, label: 'Model name + price' },
-      { x: 50, y: 21, label: 'Campaign shot' },
-      { x: 19, y: 38, label: 'Circular crop' },
-    ],
   },
   {
     n: '03',
     title: 'Gentle Jelly world',
-    note: 'The page flips to a light, glossy mood for the playful jelly line, keeping the same type system so the brand still reads as one.',
-    details: ['Light palette', 'Product spotlight', 'Detail grid'],
+    note: 'The background turns light for the Gentle Jelly line. The fonts and grid stay the same, so it still feels like one page.',
     src: `${ASSET}/section-3.webp`,
     bg: '#F3F4F6',
     dark: false,
     flip: false,
-    callouts: [
-      { x: 16, y: 12, label: 'Campaign collage' },
-      { x: 27, y: 44, label: 'Product spotlight' },
-      { x: 22, y: 84, label: 'Detail shots' },
-    ],
   },
   {
     n: '04',
     title: 'Lineup and close',
-    note: 'A bold oval portrait leads into the full jelly lineup with prices, and the page ends on a single call to action.',
-    details: ['Oval portrait', 'Product lineup', 'Closing CTA'],
+    note: 'An oval portrait leads into the full Gentle Jelly lineup with prices. The page ends with a single Discover More button.',
     src: `${ASSET}/section-4.webp`,
     bg: '#232323',
     dark: true,
     flip: true,
-    callouts: [
-      { x: 49, y: 21, label: 'Oval portrait' },
-      { x: 50, y: 48.5, label: 'Product lineup' },
-      { x: 50, y: 95, label: 'Closing CTA' },
-    ],
   },
 ]
 
@@ -154,12 +126,10 @@ function BrowserFrame({
   src,
   alt,
   dark,
-  callouts = [],
 }: {
   src: string
   alt: string
   dark: boolean
-  callouts?: Callout[]
 }) {
   return (
     <div
@@ -189,16 +159,6 @@ function BrowserFrame({
       <div className="relative">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={src} alt={alt} className="block w-full" loading="lazy" />
-        {callouts.map((c) => (
-          <span
-            key={c.label}
-            className="absolute hidden md:flex items-center gap-1.5 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-full bg-white/90 px-2.5 py-1 font-data text-[9px] uppercase tracking-widest text-[#232323] shadow-sm backdrop-blur-sm"
-            style={{ left: `${c.x}%`, top: `${c.y}%` }}
-          >
-            <span className="h-1.5 w-1.5 rounded-full bg-[#232323]" />
-            {c.label}
-          </span>
-        ))}
       </div>
     </div>
   )
@@ -283,15 +243,16 @@ export default function GentleMonsterCase({
           <div className="md:col-span-4">
             <Label dark={false}>Overview</Label>
             <h2 className="mt-4 font-display font-bold text-xl md:text-2xl uppercase tracking-tight text-ink leading-tight">
-              One brand,
+              Two lines,
               <br />
-              two moods
+              one page
             </h2>
           </div>
           <p className="md:col-span-8 font-sans text-ink/75 text-base md:text-lg leading-[1.8]">
-            A self-initiated campaign page for Gentle Monster&apos;s 2024 collection. The challenge was
-            to hold two very different lines on one page: the dark, sculptural Void KC6 and the glossy,
-            playful Gentle Jelly, while still feeling unmistakably like Gentle Monster.
+            I designed this campaign page on my own for Gentle Monster&apos;s 2024 collection. The
+            collection has two lines that look nothing alike. Void KC6 is dark and sharp, and Gentle
+            Jelly is bright and playful. I wanted each line to have its own look while the whole page
+            still felt like one brand.
           </p>
         </Reveal>
 
@@ -388,18 +349,6 @@ export default function GentleMonsterCase({
                 >
                   {s.note}
                 </p>
-                <ul className="mt-6 flex flex-wrap gap-1.5">
-                  {s.details.map((d) => (
-                    <li
-                      key={d}
-                      className={`font-data text-[9px] uppercase tracking-widest rounded-full border px-2.5 py-1 ${
-                        s.dark ? 'border-white/20 text-white/60' : 'border-ink/20 text-ink/60'
-                      }`}
-                    >
-                      {d}
-                    </li>
-                  ))}
-                </ul>
               </Reveal>
             </div>
             <div className={`lg:col-span-8 ${s.flip ? 'lg:order-1' : ''}`}>
@@ -408,7 +357,6 @@ export default function GentleMonsterCase({
                   src={s.src}
                   alt={`Gentle Monster campaign page, part ${s.n}: ${s.title}`}
                   dark={s.dark}
-                  callouts={s.callouts}
                 />
               </Reveal>
             </div>
