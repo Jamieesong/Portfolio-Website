@@ -2,7 +2,24 @@
 
 import Link from 'next/link'
 import ProjectCard from './ProjectCard'
-import { projects } from '@/lib/projects'
+import { projects, type Project } from '@/lib/projects'
+
+const GROUPS: { key: Project['category']; label: string }[] = [
+  { key: 'product', label: 'UI/UX · Product Design' },
+  { key: 'graphic', label: 'Graphic · Web Design' },
+]
+
+function CardLink({ p }: { p: Project }) {
+  return p.externalUrl ? (
+    <a href={p.externalUrl} target="_blank" rel="noopener noreferrer" className="block">
+      <ProjectCard {...p} />
+    </a>
+  ) : (
+    <Link href={`/work/${p.slug}`} className="block">
+      <ProjectCard {...p} />
+    </Link>
+  )
+}
 
 export default function SelectedWork() {
   return (
@@ -17,25 +34,28 @@ export default function SelectedWork() {
         </span>
       </div>
 
-      {/* Vertical stack — one project per scroll */}
-      <div className="px-10 md:px-16 py-12 flex flex-col gap-16 md:gap-20">
-        {projects.map((p) =>
-          p.externalUrl ? (
-            <a
-              key={p.slug}
-              href={p.externalUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block"
-            >
-              <ProjectCard {...p} />
-            </a>
-          ) : (
-            <Link key={p.slug} href={`/work/${p.slug}`} className="block">
-              <ProjectCard {...p} />
-            </Link>
+      {/* Two groups, two columns each */}
+      <div className="px-10 md:px-16 py-12 flex flex-col gap-20 md:gap-28">
+        {GROUPS.map((g, gi) => {
+          const items = projects.filter((p) => p.category === g.key)
+          return (
+            <div key={g.key} className={gi > 0 ? 'pt-16 md:pt-20 border-t border-ink/10' : ''}>
+              <div className="mb-10 md:mb-12 flex items-baseline justify-between gap-4">
+                <h2 className="font-data text-[10px] md:text-[11px] uppercase tracking-[0.3em] text-ink/55">
+                  {g.label}
+                </h2>
+                <span className="font-data text-[9px] uppercase tracking-[0.25em] text-ink/30">
+                  {String(items.length).padStart(2, '0')} projects
+                </span>
+              </div>
+              <div className="grid md:grid-cols-2 gap-x-10 lg:gap-x-14 gap-y-16 md:gap-y-20">
+                {items.map((p) => (
+                  <CardLink key={p.slug} p={p} />
+                ))}
+              </div>
+            </div>
           )
-        )}
+        })}
 
         {/* Coming soon — small de-emphasized closing note */}
         <article className="group flex flex-col items-center gap-3 w-full max-w-xs mx-auto pt-4 pb-2 opacity-70">

@@ -6,6 +6,7 @@ import FloatingNav from '@/components/FloatingNav'
 import InteractiveSections from '@/components/InteractiveSections'
 import GentleMonsterCase from '@/components/GentleMonsterCase'
 import AlongCase from '@/components/AlongCase'
+import EtmonCase from '@/components/EtmonCase'
 import {
   projects,
   getProject,
@@ -46,9 +47,18 @@ export default function ProjectPage({
 
   return (
     <main className="bg-bone min-h-screen w-full border-b border-ink/25">
-      <FloatingNav adaptive={caseStudy === 'gentle-monster'} />
+      <FloatingNav adaptive={caseStudy === 'gentle-monster' || caseStudy === 'etmon'} />
 
       {caseStudy === 'along' && <AlongCase />}
+
+      {caseStudy === 'etmon' && (
+        <EtmonCase
+          number={project.number}
+          tag={project.tag}
+          title={project.title}
+          description={project.description}
+        />
+      )}
 
       {caseStudy === 'gentle-monster' && (
         <GentleMonsterCase

@@ -31,7 +31,9 @@ export interface Project {
   externalUrl?: string
   /** Renders a custom case-study layout component instead of stacked
    * portfolio images. */
-  caseStudy?: 'gentle-monster' | 'along'
+  caseStudy?: 'gentle-monster' | 'along' | 'etmon'
+  /** Which group the project sits in on the home page Work section. */
+  category: 'product' | 'graphic'
 }
 
 export const projects: Project[] = [
@@ -49,30 +51,11 @@ export const projects: Project[] = [
     image: '/projects/along.webp',
     imagePosition: 'center',
     caseStudy: 'along',
-  },
-  {
-    slug: 'ilkwang',
-    number: '02',
-    title: 'Ilkwang Lighting',
-    subtitle: 'Website Redesign',
-    description:
-      "A full website redesign for Ilkwang Lighting — restructuring information architecture and modernising the visual system to make a heritage lighting brand feel approachable, scrollable, and confident online.",
-    tag: 'Website',
-    year: '2025',
-    role: 'UI / UX designer',
-    tools: ['Figma', 'Illustrator', 'Notion'],
-    image: '/projects/ilkwang.jpg',
-    imagePosition: 'center',
-    interactive: true,
-    sectionGroups: [
-      [7, 8, 9],
-      [10, 11, 12],
-      [13, 14, 15, 16],
-    ],
+    category: 'product',
   },
   {
     slug: 'pawlog',
-    number: '03',
+    number: '02',
     title: 'Pawlog',
     subtitle: 'UX/UI Mobile App',
     description:
@@ -91,6 +74,28 @@ export const projects: Project[] = [
       [6, 7],
       [13, 14, 15, 16],
     ],
+    category: 'product',
+  },
+  {
+    slug: 'ilkwang',
+    number: '03',
+    title: 'Ilkwang Lighting',
+    subtitle: 'Website Redesign',
+    description:
+      "A full website redesign for Ilkwang Lighting — restructuring information architecture and modernising the visual system to make a heritage lighting brand feel approachable, scrollable, and confident online.",
+    tag: 'Website',
+    year: '2025',
+    role: 'UI / UX designer',
+    tools: ['Figma', 'Illustrator', 'Notion'],
+    image: '/projects/ilkwang.jpg',
+    imagePosition: 'center',
+    interactive: true,
+    sectionGroups: [
+      [7, 8, 9],
+      [10, 11, 12],
+      [13, 14, 15, 16],
+    ],
+    category: 'graphic',
   },
   {
     slug: 'gentle-monster',
@@ -106,10 +111,27 @@ export const projects: Project[] = [
     image: '/projects/gentle-monster.avif',
     imagePosition: 'center 30%',
     caseStudy: 'gentle-monster',
+    category: 'graphic',
+  },
+  {
+    slug: 'etmon',
+    number: '05',
+    title: 'Etmon',
+    subtitle: 'Web Promotion',
+    description:
+      "A personal summer campaign page for Etmon, a womenswear brand, built around one feeling: a slow afternoon spent alone.",
+    tag: 'Personal Project',
+    year: '2025',
+    role: 'Visual designer',
+    tools: ['Photoshop', 'Figma'],
+    image: '/projects/etmon.webp',
+    imagePosition: 'center',
+    caseStudy: 'etmon',
+    category: 'graphic',
   },
   {
     slug: 'santa-maria-novella',
-    number: '05',
+    number: '06',
     title: 'Santa Maria Novella',
     subtitle: 'Website Redesign',
     description:
@@ -124,10 +146,11 @@ export const projects: Project[] = [
     // Sections 6–9 are full-page mockups much taller than one viewport;
     // they scroll freely instead of snapping to centre.
     noSnapSections: [6, 7, 8, 9],
+    category: 'graphic',
   },
   {
     slug: 'parksound',
-    number: '06',
+    number: '07',
     title: 'ParkSound AI',
     subtitle: 'AI UX Mobile App',
     description:
@@ -139,6 +162,7 @@ export const projects: Project[] = [
     image: '/projects/parksound.png',
     imagePosition: 'center',
     externalUrl: '/parksound-page/index.html',
+    category: 'graphic',
   },
 ]
 
