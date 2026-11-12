@@ -19,6 +19,12 @@ const STATS = [
   { n: 10, label: 'would detour 3 min for a sample sale', note: 'A clear detour is an easy yes.', q: 'What they want to know', bars: [["What's there", 7], ['Minutes added', 6], ['Hours', 4]] },
 ] as const
 
+const RQ = [
+  'What do people miss on the fastest or usual route?',
+  'How do unexpected discoveries happen on a walk today?',
+  'What would make a small detour feel worth it?',
+]
+
 const APPS = [
   { name: 'Google Maps', tag: 'Baseline', good: 'Fast, trusted directions', gap: 'Says little about the walk' },
   { name: 'Pleasant Routes', tag: 'Closest', good: 'Nicer routes with reasons', gap: 'No pop-ups or daily changes' },
@@ -44,7 +50,7 @@ const THEMES = [
 
 const STEPS = [
   { t: 'Check in', d: "Pick today's vibe and how much extra time you have.", img: 'check-in' },
-  { t: 'Pick sidequests', d: 'Add or skip up to three stops. Each shows what it is and the minutes it adds.', img: 'sidequests' },
+  { t: 'Pick sidequests', d: 'Add or skip each suggested stop. Each shows what it is and the minutes it adds.', img: 'sidequests' },
   { t: 'Walk', d: 'Turn-by-turn directions, with the next sidequest always in view.', img: 'walking' },
   { t: 'Lolo grows', d: 'Every stop gives Lolo a small trait, like round glasses from a vintage shop.', img: 'sidequest-done' },
   { t: 'Keep the memory', d: 'Your photo, places, and note are saved as a walk you can come back to.', img: 'walk-complete' },
@@ -217,21 +223,63 @@ export default function AlongCase() {
           </div>
         </Section>
 
-        {/* Research */}
+        {/* Research goal */}
         <Section>
-          <Label>Research · 5 apps, 10 walkers</Label>
-          <Title>People don&apos;t mind long walks. They mind the same walk.</Title>
-          <div className="mt-10 grid md:grid-cols-2 gap-4 text-[14px]">
-            <div className="rounded-[20px] bg-white/60 border border-[#E4E0D6] p-5">
-              <p className="text-[#645F55]">Competitive analysis</p>
-              <p className="mt-1">5 apps, the same trip from Brooklyn to Lower Manhattan, screen by screen</p>
+          <Label>Research</Label>
+          <Title>When every walk is built for speed, what gets lost?</Title>
+          <ol className="mt-10 grid md:grid-cols-3 gap-4">
+            {RQ.map((q, i) => (
+              <li key={q} className="rounded-[20px] border border-[#E4E0D6] bg-white/60 p-5">
+                <span className="text-[13px] text-[#5B3FE0]">0{i + 1}</span>
+                <p className="mt-2 text-[16px] leading-snug">{q}</p>
+              </li>
+            ))}
+          </ol>
+        </Section>
+
+        {/* Competitive analysis */}
+        <Section>
+          <div className="flex items-center gap-3">
+            <Label>Competitive analysis · 5 apps</Label>
+            <span className="rounded-full bg-[#1C1A16] px-2.5 py-0.5 text-[11px] text-white">My part</span>
+          </div>
+          <Title>Apps get you there or show you where to go. None value the way there.</Title>
+          <p className="mt-4 text-[15px] text-[#4A4740]">5 apps, the same trip from Brooklyn to Lower Manhattan, screen by screen.</p>
+          <div className="mt-10 grid md:grid-cols-[1.15fr_1fr] gap-4 items-stretch">
+            <div className="rounded-[24px] border border-[#E4E0D6] bg-[#FFFCF2] overflow-hidden flex items-center justify-center p-2">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={`${A}/positioning.webp`} alt="Positioning map of five apps by walking and navigation against local discovery" loading="lazy" className="w-full h-full object-contain" />
             </div>
-            <div className="rounded-[20px] bg-white/60 border border-[#E4E0D6] p-5">
-              <p className="text-[#645F55]">Survey</p>
-              <p className="mt-1">10 walkers, ages 18 to 29: 7 on routine routes, 3 who recently moved</p>
+            <div className="rounded-[24px] border border-[#E4E0D6] bg-white/60 divide-y divide-[#E4E0D6]">
+              {APPS.map((a) => (
+                <div key={a.name} className="px-5 py-4">
+                  <div className="flex items-baseline justify-between">
+                    <p className="text-[15px] font-medium">{a.name}</p>
+                    <p className="text-[11px] uppercase tracking-[0.08em] text-[#8A867E]">{a.tag}</p>
+                  </div>
+                  <p className="mt-1.5 text-[13px] text-[#4A4740]"><span className="text-[#B08A00]">+</span> {a.good}</p>
+                  <p className="text-[13px] text-[#4A4740]"><span className="text-[#5B3FE0]">−</span> {a.gap}</p>
+                </div>
+              ))}
             </div>
           </div>
-          <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="mt-4 grid md:grid-cols-3 gap-4">
+            {GAPS.map(([area, gap]) => (
+              <div key={area} className="rounded-[20px] bg-[#ECE8FD] p-5">
+                <p className="text-[11px] uppercase tracking-[0.08em] text-[#5B3FE0]">Gap · {area}</p>
+                <p className="mt-1.5 text-[16px] font-medium text-[#3A27A8]">{gap}</p>
+              </div>
+            ))}
+          </div>
+          <More href={`${A}/competitive.webp`}>See the full competitive analysis</More>
+        </Section>
+
+        {/* Survey */}
+        <Section>
+          <Label>Survey · 10 walkers</Label>
+          <Title>People don&apos;t mind long walks. They mind the same walk.</Title>
+          <p className="mt-4 text-[15px] text-[#4A4740]">10 walkers, ages 18 to 29: 7 on routine routes, 3 who recently moved.</p>
+          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
             {STATS.map((s) => (
               <div key={s.label} className="rounded-[20px] border border-[#E4E0D6] bg-white/60 p-5 flex flex-col">
                 <p className="text-[40px] font-medium leading-none tracking-[-0.02em]">
@@ -257,44 +305,24 @@ export default function AlongCase() {
             ))}
           </div>
           <p className="mt-4 text-[12px] text-[#8A867E]">10 answers are an early signal, not proof. We used them to choose a direction.</p>
-          <More href={`${A}/research.webp`}>See the full research board</More>
         </Section>
 
-        {/* Competitive analysis */}
+        {/* Affinity map */}
         <Section>
-          <div className="flex items-center gap-3">
-            <Label>Competitive analysis · 5 apps</Label>
-            <span className="rounded-full bg-[#1C1A16] px-2.5 py-0.5 text-[11px] text-white">My part</span>
+          <Label>Affinity map</Label>
+          <Title>What 10 walkers and 5 apps told us, grouped into six themes.</Title>
+          <p className="mt-4 max-w-[720px] text-[15px] text-[#4A4740] leading-relaxed">
+            Each sticky is one data point from the survey, the competitive analysis, or a direct quote.
+            The violet bar under each group is what it means for the design.
+          </p>
+          <a href={`${A}/affinity.webp`} target="_blank" rel="noopener noreferrer" className="mt-10 block overflow-hidden rounded-[24px] border border-[#E4E0D6] bg-white">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={`${A}/affinity.webp`} alt="Affinity map grouping survey answers, app findings and quotes into six themes" loading="lazy" className="w-full" />
+          </a>
+          <div className="flex flex-wrap gap-x-6">
+            <More href={`${A}/affinity.webp`}>Open the affinity map</More>
+            <More href={`${A}/research.webp`}>See the full research board</More>
           </div>
-          <Title>Apps get you there or show you where to go. None value the way there.</Title>
-          <div className="mt-10 grid md:grid-cols-[1.15fr_1fr] gap-4 items-stretch">
-            <div className="rounded-[24px] border border-[#E4E0D6] bg-[#FFFCF2] overflow-hidden flex items-center justify-center p-2">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={`${A}/positioning.webp`} alt="Positioning map of five apps by walking and navigation against local discovery" loading="lazy" className="w-full h-full object-contain" />
-            </div>
-            <div className="rounded-[24px] border border-[#E4E0D6] bg-white/60 divide-y divide-[#E4E0D6]">
-              {APPS.map((a) => (
-                <div key={a.name} className="px-5 py-4">
-                  <div className="flex items-baseline justify-between">
-                    <p className="text-[15px] font-medium">{a.name}</p>
-                    <p className="text-[11px] uppercase tracking-[0.08em] text-[#8A867E]">{a.tag}</p>
-                  </div>
-                  <p className="mt-1.5 text-[13px] text-[#4A4740]"><span className="text-[#B08A00]">+</span> {a.good}</p>
-                  <p className="text-[13px] text-[#4A4740]"><span className="text-[#5B3FE0]">−</span> {a.gap}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-          <p className="mt-3 text-[12px] text-[#8A867E]">Sidekick was Along&apos;s working name. Dots show how well each app helps you keep a memory of the walk.</p>
-          <div className="mt-4 grid md:grid-cols-3 gap-4">
-            {GAPS.map(([area, gap]) => (
-              <div key={area} className="rounded-[20px] bg-[#ECE8FD] p-5">
-                <p className="text-[11px] uppercase tracking-[0.08em] text-[#5B3FE0]">Gap · {area}</p>
-                <p className="mt-1.5 text-[16px] font-medium text-[#3A27A8]">{gap}</p>
-              </div>
-            ))}
-          </div>
-          <More href={`${A}/competitive.webp`}>See the full competitive analysis</More>
         </Section>
 
         {/* Synthesis */}
@@ -311,11 +339,6 @@ export default function AlongCase() {
             <Screen src={THEMES[theme].img} className="max-w-[280px] mx-auto" />
           </div>
           <p className="mt-3 text-[13px] text-[#8A867E]">Tap a theme to see the screen it turned into.</p>
-          <a href={`${A}/affinity.webp`} target="_blank" rel="noopener noreferrer" className="mt-10 block overflow-hidden rounded-[24px] border border-[#E4E0D6] bg-white">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={`${A}/affinity.webp`} alt="Affinity map grouping survey answers, app findings and quotes into six themes" loading="lazy" className="w-full" />
-          </a>
-          <More href={`${A}/affinity.webp`}>Open the affinity map</More>
         </Section>
 
         {/* Flow */}
