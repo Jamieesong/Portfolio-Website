@@ -37,6 +37,7 @@ const COLORS = [
 const SECTIONS = [
   {
     n: '01',
+    scroll: true,
     title: 'Me time Afternoon',
     note: 'The page opens on an oval portrait and a script title, like the first page of a diary. Three best items follow right away, so the mood leads straight into shopping.',
     src: `${ASSET}/section-1.webp`,
@@ -47,6 +48,7 @@ const SECTIONS = [
   },
   {
     n: '02',
+    scroll: true,
     title: 'Lookbook',
     note: 'Soft blue pages with staggered photos and tiny handwritten notes. Product names sit next to each look, but the layout still reads like a personal photo album.',
     src: `${ASSET}/section-2.webp`,
@@ -57,6 +59,7 @@ const SECTIONS = [
   },
   {
     n: '03',
+    scroll: true,
     title: 'A day in July',
     note: 'A deeper sage chapter for the jacket, then a film-strip story that introduces Etmon in its own words: a brand for women with a clear world of their own.',
     src: `${ASSET}/section-3.webp`,
@@ -67,6 +70,7 @@ const SECTIONS = [
   },
   {
     n: '04',
+    scroll: false,
     title: 'Special event',
     note: 'A summer sale with a coupon you want to tear off, two product picks next to the look, and a teaser for part two of the collection to close the page.',
     src: `${ASSET}/section-4.webp`,
@@ -258,7 +262,7 @@ function Reveal({ children, className = '' }: { children: ReactNode; className?:
   )
 }
 
-function BrowserFrame({ src, alt, dark }: { src: string; alt: string; dark: boolean }) {
+function BrowserFrame({ src, alt, dark, scroll }: { src: string; alt: string; dark: boolean; scroll: boolean }) {
   return (
     <div className="relative">
       <Tape className="-top-3 -left-6 -rotate-[24deg]" />
@@ -270,12 +274,14 @@ function BrowserFrame({ src, alt, dark }: { src: string; alt: string; dark: bool
           ))}
           <span className={`ml-3 font-data text-[9px] tracking-widest ${dark ? 'text-white/40' : 'text-black/30'}`}>etmon.co.kr/24-summer</span>
         </div>
-        <div className={`etmon-scroll max-h-[76vh] overflow-y-auto overscroll-contain ${dark ? 'etmon-scroll-dark' : ''}`}>
+        <div className={scroll ? `etmon-scroll max-h-[76vh] overflow-y-auto overscroll-contain ${dark ? 'etmon-scroll-dark' : ''}` : ''}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={src} alt={alt} className="block w-full" loading="lazy" />
         </div>
       </div>
-      <p className={`mt-3 text-right font-data text-[9px] uppercase tracking-[0.25em] ${dark ? 'text-white/45' : 'text-ink/40'}`}>Scroll inside the page ↓</p>
+      {scroll && (
+        <p className={`mt-3 text-right font-data text-[9px] uppercase tracking-[0.25em] ${dark ? 'text-white/45' : 'text-ink/40'}`}>Scroll inside the page ↓</p>
+      )}
     </div>
   )
 }
@@ -492,8 +498,8 @@ export default function EtmonCase({ number, tag, title, description }: { number:
         <section key={s.n} className="relative overflow-hidden px-6 md:px-16 py-24 md:py-28" style={{ background: s.bg }}>
           <Sparkle size={14} color={s.dark ? C.butter : C.ink} className={`absolute top-12 ${s.flip ? 'left-[6%]' : 'right-[6%]'} opacity-70`} />
           <Sparkle size={9} color={s.dark ? C.butter : C.ink} className={`absolute top-20 ${s.flip ? 'left-[9%]' : 'right-[9%]'} opacity-70`} />
-          <div className="max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            <div className={`lg:col-span-4 ${s.flip ? 'lg:order-2' : ''}`}>
+          <div className={`max-w-6xl mx-auto grid lg:grid-cols-12 gap-12 lg:gap-16 ${s.scroll ? 'items-center' : 'items-start'}`}>
+            <div className={`lg:col-span-4 ${s.scroll ? '' : 'lg:sticky lg:top-28'} ${s.flip ? 'lg:order-2' : ''}`}>
               <Reveal>
                 <p className={`${serif.className} italic text-[22px] ${s.dark ? 'text-white/60' : 'text-ink/50'}`}>No. {s.n}</p>
                 <h2 className={`${serif.className} mt-1 text-[38px] md:text-[48px] leading-[1.02] font-light ${s.dark ? 'text-[#FEFFBF]' : 'text-ink'}`}>{s.title}</h2>
@@ -505,7 +511,7 @@ export default function EtmonCase({ number, tag, title, description }: { number:
             </div>
             <div className={`lg:col-span-8 ${s.flip ? 'lg:order-1' : ''}`}>
               <Reveal>
-                <BrowserFrame src={s.src} alt={`Etmon campaign page, part ${s.n}: ${s.title}`} dark={s.dark} />
+                <BrowserFrame src={s.src} alt={`Etmon campaign page, part ${s.n}: ${s.title}`} dark={s.dark} scroll={s.scroll} />
               </Reveal>
             </div>
           </div>
